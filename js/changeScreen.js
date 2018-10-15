@@ -1,14 +1,7 @@
-
 let central = document.querySelector(`.central`);
 
-const clearMain = function () {         // Очитска главного экрана
-  while (central.firstChild) {
-    central.removeChild(central.firstChild);
-  }
-};
-
-const changeScreen = function (element) {      // Смена экрана
-  clearMain();
+const changeScreen = (element) => {      // Смена экрана
+  central.innerHTML = ``;
   central.appendChild(element);
 };
 

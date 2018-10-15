@@ -2,16 +2,13 @@ import getElementFromTemplate from '../makeTemplate';
 import changeScreen from '../changeScreen';
 import gameOne from './game-1';
 import intro from './intro';
+import footer from './footer';
+import header from './header';
+import data from '../data';
 
-const rules = function () {
-  const node = getElementFromTemplate(`<header class="header">
-  <div class="header__back">
-    <span class="back">
-      <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-      <img src="img/logo_small.png" width="101" height="44">
-    </span>
-  </div>
-  </header>
+const rules = () => {
+  const node = getElementFromTemplate(`
+  ${header(data.initialState)}
   <div class="rules">
   <h1 class="rules__title">Правила</h1>
   <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
@@ -28,16 +25,7 @@ const rules = function () {
     <button class="rules__button  continue" type="submit">Go!</button>
   </form>
   </div>
-  <footer class="footer">
-  <a href="https://htmlacademy.ru" class="social-link social-link--academy">HTML Academy</a>
-  <span class="footer__made-in">Сделано в <a href="https://htmlacademy.ru" class="footer__link">HTML Academy</a> &copy; 2016</span>
-  <div class="footer__social-links">
-    <a href="https://twitter.com/htmlacademy_ru" class="social-link  social-link--tw">Твиттер</a>
-    <a href="https://www.instagram.com/htmlacademy/" class="social-link  social-link--ins">Инстаграм</a>
-    <a href="https://www.facebook.com/htmlacademy" class="social-link  social-link--fb">Фэйсбук</a>
-    <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
-  </div>
-  </footer>`);
+  ${footer()}`);
 
   let button = node.querySelector(`.rules__button`);
   button.disabled = true;
@@ -54,7 +42,7 @@ const rules = function () {
 
   form.addEventListener(`submit`, function (e) {
     e.preventDefault();
-    changeScreen(gameOne());
+    changeScreen(gameOne(data.levels[`gameOne`]));
   });
 
   let back = node.querySelector(`.back`);
