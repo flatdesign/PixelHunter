@@ -1,6 +1,6 @@
-import getElementFromTemplate from '../makeTemplate';
-import greeting from './greeting';
+import getElementFromTemplate from '../getElementFromTemplate';
 import changeScreen from '../changeScreen';
+import greeting from './greeting';
 import footer from './footer';
 
 

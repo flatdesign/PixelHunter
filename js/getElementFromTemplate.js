@@ -1,4 +1,3 @@
-
 const getElementFromTemplate = (text) => {
   let element = document.createElement(`template`);
   element.innerHTML = text;

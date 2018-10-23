@@ -1,14 +1,15 @@
-import getElementFromTemplate from '../makeTemplate';
+import data from '../data';
 import changeScreen from '../changeScreen';
-import gameOne from './game-1';
+import getElementFromTemplate from '../getElementFromTemplate';
+import gameTemplate from './gameTemplate';
 import intro from './intro';
 import footer from './footer';
 import header from './header';
-import data from '../data';
+
 
 const rules = () => {
   const node = getElementFromTemplate(`
-  ${header(data.initialState)}
+  ${header(data.currentState)}
   <div class="rules">
   <h1 class="rules__title">Правила</h1>
   <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
@@ -42,7 +43,7 @@ const rules = () => {
 
   form.addEventListener(`submit`, function (e) {
     e.preventDefault();
-    changeScreen(gameOne(data.levels[`gameOne`]));
+    changeScreen(gameTemplate(data.levels[data.currentState.level]));
   });
 
   let back = node.querySelector(`.back`);

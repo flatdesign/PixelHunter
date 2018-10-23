@@ -1,8 +1,5 @@
-// import intro from './screens/intro';
-import gameThree from './screens/game-3';
+import gameTemplate from './screens/gameTemplate';
 import changeScreen from './changeScreen';
 import data from './data';
 
-
-changeScreen(gameThree(data.levels[`gameThree`]));
-
+changeScreen(gameTemplate(data.levels[data.currentState.level]));

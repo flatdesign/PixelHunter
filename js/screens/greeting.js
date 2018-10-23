@@ -1,4 +1,4 @@
-import getElementFromTemplate from '../makeTemplate';
+import getElementFromTemplate from '../getElementFromTemplate';
 import changeScreen from '../changeScreen';
 import rules from './rules';
 import footer from './footer';
