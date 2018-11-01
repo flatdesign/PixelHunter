@@ -1,5 +1,4 @@
-import gameTemplate from './screens/gameTemplate';
-import changeScreen from './changeScreen';
-import data from './data';
+import Application from './Application';
 
-changeScreen(gameTemplate(data.levels[data.currentState.level]));
+Application.showWelcome();
+

@@ -14,12 +14,12 @@
     "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
     "babel-register": "6.26.0",
     "browser-sync": "2.18.8",
-    "css-mqpacker": "6.0.0",
+    "css-mqpacker": "^6.0.0",
     "del": "2.2.2",
     "eslint": "3.19.0",
     "eslint-config-htmlacademy": "0.2.x",
     "gulp": "3.9.1",
-    "gulp-better-rollup": "^3.3.0",
+    "gulp-better-rollup": "^3.4.0",
     "gulp-csso": "3.0.0",
     "gulp-imagemin": "3.2.0",
     "gulp-mocha": "^6.0.0",
@@ -27,7 +27,7 @@
     "gulp-postcss": "7.0.0",
     "gulp-rename": "1.2.2",
     "gulp-sass": "3.1.0",
-    "gulp-sourcemaps": "^2.6.0"
+    "gulp-sourcemaps": "^2.6.4"
   },
   "engines": {
     "node": "6.10"

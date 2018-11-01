@@ -4,7 +4,7 @@ import changeLevel from '../changeLevel';
 import constants from '../constants';
 import setLives from '../setLives';
 import timer from '../timer';
-import header from './header';
+import header from './header/header';
 import getElementFromTemplate from '../getElementFromTemplate';
 
 
