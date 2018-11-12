@@ -19,7 +19,7 @@ export default class HeaderView extends AbstractView {
     </header>`;
   }
 
-  actions() {
+  bind() {
     return this.content;
   }
 }

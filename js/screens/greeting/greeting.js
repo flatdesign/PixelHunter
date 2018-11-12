@@ -1,8 +1,17 @@
 import GreetingView from './greetingView';
+import changeScreen from '../../changeScreen';
+import app from '../../Application';
+export default class Greeting {
+  constructor() {
+    this.view = new GreetingView();
+  }
 
-const gretting = () => {
-  const obj = new GreetingView();
-  return obj.actions();
-};
+  init() {
+    changeScreen(this.view.bind());
 
-export default gretting;
+    this.view.nextScreen = () => {
+      app.showRules();
+    };
+  }
+}
+

@@ -1,5 +1,4 @@
 import AbstractView from '../../AbstractView';
-import Application from '../../Application';
 import footer from '../footer/footer';
 
 export default class GreetingView extends AbstractView {
@@ -21,12 +20,16 @@ export default class GreetingView extends AbstractView {
     ${footer()}`;
   }
 
-  actions() {
+  bind() {
     let node = this.createElement();
     let next = node.querySelector(`.greeting__continue`);
-    next.addEventListener(`click`, function () {
-      Application.showRules();
+    next.addEventListener(`click`, () => {
+      this.nextScreen();
     });
     return node;
+  }
+
+  nextScreen() {
+
   }
 }

@@ -1,5 +1,4 @@
 import AbstractView from '../../AbstractView';
-import Application from '../../Application';
 import footer from '../footer/footer';
 import data from '../../data';
 import header from '../header/header';
@@ -28,7 +27,7 @@ export default class RulesView extends AbstractView {
     ${footer()}`;
   }
 
-  actions() {
+  bind() {
     let node = this.createElement();
     let button = node.querySelector(`.rules__button`);
     button.disabled = true;
@@ -43,16 +42,18 @@ export default class RulesView extends AbstractView {
       }
     });
 
-    form.addEventListener(`submit`, function (e) {
+    form.addEventListener(`submit`, (e) => {
       e.preventDefault();
-      Application.showGame(data.levels[data.currentState.level]);
+      this.onNextScreen();
     });
 
     let back = node.querySelector(`.back`);
-    back.addEventListener(`click`, function () {
-      Application.showWelcome();
+    back.addEventListener(`click`, () => {
+      this.onPreviousScreen();
     });
 
     return node;
   }
+  onNextScreen() {}
+  onPreviousScreen() {}
 }

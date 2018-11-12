@@ -2,17 +2,25 @@ import AbstractView from '../../AbstractView';
 import footer from '../footer/footer';
 import header from '../header/header';
 import constants from '../../constants';
-import Application from '../../Application';
 
 export default class IntroView extends AbstractView {
   constructor(state) {
     super();
-    const resLevels = constants.LEVELS * 100;
-    const resFast = state.answers.fast * 50;
-    const resLive = state.lives * 50;
-    const resSlow = -(state.answers.slow * 50);
-    const resTotal = resLevels + resFast + resLive + resSlow;
+    let fastCount = 0;
+    let slowCount = 0;
 
+    state.answers.forEach(function (elem) {
+      if (elem === `fast`) {
+        fastCount++;
+      } else if (elem === `slow`) {
+        slowCount++;
+      }
+    });
+    const resLevels = constants.LEVELS * 100;
+    const resFast = fastCount * 50;
+    const resLive = state.lives * 50;
+    const resSlow = -(slowCount * 50);
+    const resTotal = resLevels + resFast + resLive + resSlow;
 
     this.content = `
     ${header(state)}
@@ -23,7 +31,7 @@ export default class IntroView extends AbstractView {
           <td class="result__number">1.</td>
           <td colspan="2">
             <ul class="stats">
-            ${state.answers.stats.map((element) => `<li class="stats__result stats__result--${element}"></li>`).join(``)}
+            ${state.answers.map((element) => `<li class="stats__result stats__result--${element}"></li>`).join(``)}
             </ul>
           </td>
           <td class="result__points">×&nbsp;100</td>
@@ -32,7 +40,7 @@ export default class IntroView extends AbstractView {
         <tr>
           <td></td>
           <td class="result__extra">Бонус за скорость:</td>
-          <td class="result__extra">${state.answers.fast}&nbsp;<span class="stats__result stats__result--fast"></span></td>
+          <td class="result__extra">${fastCount}&nbsp;<span class="stats__result stats__result--fast"></span></td>
           <td class="result__points">×&nbsp;50</td>
           <td class="result__total">${resFast}</td>
         </tr>
@@ -46,7 +54,7 @@ export default class IntroView extends AbstractView {
         <tr>
           <td></td>
           <td class="result__extra">Штраф за медлительность:</td>
-          <td class="result__extra">${state.answers.slow}&nbsp;<span class="stats__result stats__result--slow"></span></td>
+          <td class="result__extra">${slowCount}&nbsp;<span class="stats__result stats__result--slow"></span></td>
           <td class="result__points">×&nbsp;50</td>
           <td class="result__total">${resSlow}</td>
         </tr>
@@ -58,12 +66,14 @@ export default class IntroView extends AbstractView {
     ${footer()}`;
   }
 
-  actions() {
+  bind() {
     let node = this.createElement();
     let back = node.querySelector(`.back`);
-    back.addEventListener(`click`, function () {
-      Application.showWelcome();
+    back.addEventListener(`click`, () => {
+      this.onPreviousScreen();
     });
     return node;
   }
+
+  onPreviousScreen() {}
 }

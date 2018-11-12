@@ -1,11 +1,11 @@
-import changeScreen from './changeScreen';
 import constants from './constants';
 import data from './data';
-import game from './screens/game/game';
+import Game from './screens/game/game';
 
 const changeLevel = (level) => {
   if (level >= 0 && level < constants.LEVELS) {
-    changeScreen(game(data.levels[level]));
+    data.currentState.level = level;
+    new Game(data.currentState).init(data.levels[level]);
   } else if (level < 0) {
     throw new Error(`level should be more then 0`);
   } else if (level >= constants.LEVELS) {

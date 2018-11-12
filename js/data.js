@@ -1,21 +1,18 @@
 import constants from './constants';
+import utils from './utils';
 
-const initialState = Object.freeze({
+const initialState = utils.deepFreeze({
   level: 0,
   lives: constants.LIVES,
   time: constants.TIME,
-  answers: {
-    fast: 0,
-    slow: 0,
-    stats: new Array(constants.LEVELS).fill(`unknown`)
-  }
-
+  answers: new Array(constants.LEVELS).fill(`unknown`)
 });
 
-let currentState = Object.assign({}, initialState);
+
+const currentState = utils.cloneObj(initialState);
 
 const levels = [
-  {title: `Угадайте для каждого изображения фото или рисунок?`,
+  {title: `УгадаcloneObjclocloneObjйте для каждого изображения фото или рисунок?`,
     type: ``,
     options: new Set([
       `<img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">`,

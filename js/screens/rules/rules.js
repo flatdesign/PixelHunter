@@ -1,8 +1,22 @@
 import RulesView from './rulesView';
+import changeScreen from '../../changeScreen';
+import app from '../../Application';
+import utils from '../../utils';
 
-const rules = () => {
-  const obj = new RulesView();
-  return obj.actions();
-};
+export default class Rules {
+  constructor() {
+    this.view = new RulesView();
+  }
+  init() {
+    changeScreen(this.view.bind());
 
-export default rules;
+    this.view.onNextScreen = () => {
+      app.showGame();
+    };
+
+    this.view.onPreviousScreen = () => {
+      utils.backToIntro();
+    };
+  }
+}
+

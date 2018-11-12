@@ -1,8 +1,18 @@
 import IntroView from './introView';
+import changeScreen from '../../changeScreen';
+import app from '../../Application';
 
-const intro = () => {
-  const obj = new IntroView();
-  return obj.actions();
-};
+export default class Intro {
+  constructor() {
+    this.view = new IntroView();
+  }
 
-export default intro;
+  init() {
+    changeScreen(this.view.bind());
+    this.view.nextScreen = () => {
+      app.showGretting();
+    };
+
+  }
+}
+

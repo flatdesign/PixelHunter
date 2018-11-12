@@ -1,5 +1,5 @@
 import AbstractView from '../../AbstractView';
-import Application from '../../Application';
+
 import footer from '../footer/footer';
 
 export default class IntroView extends AbstractView {
@@ -14,12 +14,16 @@ export default class IntroView extends AbstractView {
   ${footer()}`;
   }
 
-  actions() {
+  bind() {
     let node = this.createElement();
     let next = node.querySelector(`.intro__asterisk `);
-    next.addEventListener(`click`, function () {
-      Application.showGretting();
+    next.addEventListener(`click`, () => {
+      this.nextScreen();
     });
     return node;
   }
+
+  nextScreen() {
+  }
 }
+

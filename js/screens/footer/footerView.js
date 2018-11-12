@@ -16,7 +16,7 @@ export default class FooterView extends AbstractView {
     </footer>
     `;
   }
-  actions() {
+  bind() {
     return this.content;
   }
 }
